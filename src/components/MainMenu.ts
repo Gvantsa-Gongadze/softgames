@@ -42,7 +42,7 @@ export class MainMenu extends Container {
       const prevItem = this.menuItemViews[index - 1];
       const lastItemPos = prevItem
         ? prevItem.x + (prevItem.width + text.width) * 0.5 + spacing
-        : 0;
+        : text.width * 0.5;
       text.position.set(lastItemPos, 0);
 
       text.eventMode = 'static';
