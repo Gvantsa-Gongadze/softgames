@@ -1,10 +1,11 @@
-import { Application, Container, Text } from 'pixi.js';
+import { Application, Assets, Container, Text } from 'pixi.js';
 import { SceneManager } from '../SceneManager';
 import { AceOfShadows } from '../games/AceOfShadows';
 import { MagicWords } from '../games/MagicWords';
 import { PhoenixFlame } from '../games/PhoenixFlame';
-import { MenuItem } from '../types/MenuItemType';
+import { MenuItem } from '../constants/types/MenuItemType';
 import { gsap } from 'gsap';
+import { GAME_NAMES } from '../constants/Constants';
 
 export class MainMenu extends Container {
   private menuItemViews: Text[] = [];
@@ -13,18 +14,42 @@ export class MainMenu extends Container {
 
     const menuItems: MenuItem[] = [
       {
-        label: 'Ace of Shadows',
-        onClick: () => SceneManager.changeScene(new AceOfShadows(), app),
+        label: GAME_NAMES.AceOfShadows,
+        onClick: () => {
+          Assets.loadBundle(GAME_NAMES.AceOfShadows).then(() => {
+            SceneManager.changeScene(
+              new AceOfShadows(),
+              app,
+              GAME_NAMES.AceOfShadows,
+            );
+          });
+        },
         isActive: true,
       },
       {
-        label: 'Magic Words',
-        onClick: () => SceneManager.changeScene(new MagicWords(), app),
+        label: GAME_NAMES.MagicWords,
+        onClick: () => {
+          Assets.loadBundle(GAME_NAMES.MagicWords).then(() => {
+            SceneManager.changeScene(
+              new MagicWords(),
+              app,
+              GAME_NAMES.MagicWords,
+            );
+          });
+        },
         isActive: false,
       },
       {
-        label: 'Phoenix Flame',
-        onClick: () => SceneManager.changeScene(new PhoenixFlame(), app),
+        label: GAME_NAMES.PhoenixFlame,
+        onClick: () => {
+          Assets.loadBundle(GAME_NAMES.PhoenixFlame).then(() => {
+            SceneManager.changeScene(
+              new PhoenixFlame(),
+              app,
+              GAME_NAMES.PhoenixFlame,
+            );
+          });
+        },
         isActive: false,
       },
     ];
@@ -61,7 +86,6 @@ export class MainMenu extends Container {
       text.style.fill = i === index ? '#CBC1AE' : 'white';
       const scaleTo = i === index ? 1.04 : 1;
       gsap.to(text.scale, { x: scaleTo, y: scaleTo, duration: 0.1 });
-      // text.style.fontSize = i === index ? 26 : 24;
     });
   };
 }
