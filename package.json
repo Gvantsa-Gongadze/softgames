@@ -30,6 +30,7 @@
     "webpack-dev-server": "^5.2.1"
   },
   "dependencies": {
+    "gsap": "^3.13.0",
     "pixi.js": "^7.4.3"
   }
 }
