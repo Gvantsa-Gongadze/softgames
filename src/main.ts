@@ -9,6 +9,7 @@ import {
   INITIAL_GAME_NAME,
 } from './constants/Constants';
 import { AceOfShadows } from './games/AceOfShadows';
+import { FPSCounter } from './components/FPSCounter';
 
 const app = new Application({
   resizeTo: window,
@@ -51,3 +52,6 @@ declare global {
 
 window.__PIXI_APP__ = app;
 window.__PIXI_RENDERER__ = app.renderer as Renderer;
+
+FPSCounter(app);
+// app.stage.addChild(fpsCounter);
