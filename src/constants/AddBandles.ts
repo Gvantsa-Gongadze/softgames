@@ -5,12 +5,12 @@ export const AddBandles = (): void => {
   const bundle: Record<string, string> = {};
 
   for (let i = 0; i < DIFFERENT_CARD_COUNT; i++) {
-    bundle[`card-${i}`] = `/assets/cards/${i}.png`;
+    bundle[`card-${i}`] = `assets/cards/${i}.png`;
   }
 
   Assets.addBundle(GAME_NAMES.AceOfShadows, bundle);
 
   Assets.addBundle(GAME_NAMES.PhoenixFlame, {
-    fire: '/assets/particles/fire.png',
+    fire: 'assets/particles/fire.png',
   });
 };
