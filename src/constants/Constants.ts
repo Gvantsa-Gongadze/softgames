@@ -4,6 +4,8 @@ export const GAME_NAMES = {
   PhoenixFlame: 'Phoenix Flame',
 };
 
+export const INITIAL_GAME_NAME = GAME_NAMES.AceOfShadows;
+
 export const DESIGN_WIDTH = 1440;
 export const DESIGN_HEIGHT = 900;
 

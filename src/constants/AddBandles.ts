@@ -9,4 +9,8 @@ export const AddBandles = (): void => {
   }
 
   Assets.addBundle(GAME_NAMES.AceOfShadows, bundle);
+
+  Assets.addBundle(GAME_NAMES.PhoenixFlame, {
+    fire: '/assets/particles/fire.png',
+  });
 };

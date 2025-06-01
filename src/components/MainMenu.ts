@@ -5,7 +5,7 @@ import { MagicWords } from '../games/MagicWords';
 import { PhoenixFlame } from '../games/PhoenixFlame';
 import { MenuItem } from '../constants/types/MenuItemType';
 import { gsap } from 'gsap';
-import { GAME_NAMES } from '../constants/Constants';
+import { GAME_NAMES, INITIAL_GAME_NAME } from '../constants/Constants';
 import { fetchDialogue } from '../api/MagicWords';
 
 export class MainMenu extends Container {
@@ -25,7 +25,6 @@ export class MainMenu extends Container {
             );
           });
         },
-        isActive: true,
       },
       {
         label: GAME_NAMES.MagicWords,
@@ -39,7 +38,6 @@ export class MainMenu extends Container {
             );
           });
         },
-        isActive: false,
       },
       {
         label: GAME_NAMES.PhoenixFlame,
@@ -52,7 +50,6 @@ export class MainMenu extends Container {
             );
           });
         },
-        isActive: false,
       },
     ];
 
@@ -60,11 +57,11 @@ export class MainMenu extends Container {
     menuItems.forEach((item, index) => {
       const text = new Text(item.label, {
         fontSize: 24,
-        fill: item.isActive ? '#CBC1AE' : 'white',
+        fill: item.label === INITIAL_GAME_NAME ? '#CBC1AE' : 'white',
       });
       this.menuItemViews.push(text);
       text.anchor.set(0.5);
-      text.scale.set(item.isActive ? 1.04 : 1);
+      text.scale.set(item.label === INITIAL_GAME_NAME ? 1.04 : 1);
 
       const prevItem = this.menuItemViews[index - 1];
       const lastItemPos = prevItem
