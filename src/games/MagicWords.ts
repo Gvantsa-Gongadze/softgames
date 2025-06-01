@@ -1,17 +1,26 @@
-import { Container, Text } from 'pixi.js';
+import { Container } from 'pixi.js';
+import { Conversation, Dialogue } from '../constants/interfaces/MagicWords';
+import { flattenDialogue } from '../api/MagicWordsTransformed';
+import { DialogueView } from '../components/Dialogue';
+import { DESIGN_HEIGHT, DESIGN_WIDTH } from '../constants/Constants';
 
 export class MagicWords extends Container {
-  constructor() {
+  private dialogue: Dialogue[] = [];
+
+  constructor(data: Conversation | null) {
     super();
+    if (data) {
+      this.dialogue = flattenDialogue(data);
+    }
 
-    const text = new Text('Magic Words', {
-      fill: 'lime',
-      fontSize: 28,
-    });
+    for (let i = 0; i < this.dialogue.length; i++) {
+      const element = this.dialogue[i];
+      const line = new DialogueView(element);
+      line.y = this.height + line.height - 20;
+      this.addChild(line);
+    }
 
-    text.anchor.set(0.5);
-    text.position.set(100, 100);
-
-    this.addChild(text);
+    this.scale.set((DESIGN_HEIGHT - 300) / this.height);
+    this.position.set((DESIGN_WIDTH - this.width) * 0.5, 20);
   }
 }

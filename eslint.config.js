@@ -17,7 +17,8 @@ export default [
         window: 'readonly',
         document: 'readonly',
         console: 'readonly',
-        HTMLCanvasElement: 'readonly'
+        HTMLCanvasElement: 'readonly',
+        fetch: 'readonly',
       }
     },
     plugins: {

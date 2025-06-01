@@ -6,6 +6,7 @@ import { PhoenixFlame } from '../games/PhoenixFlame';
 import { MenuItem } from '../constants/types/MenuItemType';
 import { gsap } from 'gsap';
 import { GAME_NAMES } from '../constants/Constants';
+import { fetchDialogue } from '../api/MagicWords';
 
 export class MainMenu extends Container {
   private menuItemViews: Text[] = [];
@@ -29,9 +30,10 @@ export class MainMenu extends Container {
       {
         label: GAME_NAMES.MagicWords,
         onClick: () => {
-          Assets.loadBundle(GAME_NAMES.MagicWords).then(() => {
+          Assets.loadBundle(GAME_NAMES.MagicWords).then(async () => {
+            const data = await fetchDialogue();
             SceneManager.changeScene(
-              new MagicWords(),
+              new MagicWords(data),
               app,
               GAME_NAMES.MagicWords,
             );

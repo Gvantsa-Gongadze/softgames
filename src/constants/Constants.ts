@@ -4,4 +4,7 @@ export const GAME_NAMES = {
   PhoenixFlame: 'Phoenix Flame',
 };
 
+export const DESIGN_WIDTH = 1440;
+export const DESIGN_HEIGHT = 900;
+
 export const DIFFERENT_CARD_COUNT = 67;
